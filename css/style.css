@@ -29,8 +29,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -159,4 +159,39 @@ body {
 .letra.visible {
     opacity: 1;
     filter: blur(0);
+}
+
+
+
+/* =========================================
+   Responsividad para Celulares
+========================================= */
+@media (max-width: 768px) {
+    .name {
+        font-size: 3rem; /* Achicamos los nombres */
+    }
+    .and-container {
+        width: 180px; /* Achicamos el AND */
+    }
+    .envelope-img {
+        width: 280px; /* Achicamos la carta */
+    }
+    .title-container {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .name {
+        font-size: 2.2rem; /* Aún más chico para celulares angostos */
+    }
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    .and-container {
+        width: 140px;
+    }
+    .envelope-img {
+        width: 240px;
+    }
 }
