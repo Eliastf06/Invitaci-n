@@ -152,7 +152,7 @@ html, body {
 ========================================= */
 .and-text-container {
     text-align: center;
-    margin: -35px 0 -15px 0; 
+    margin: -25px 0 -5px 0; 
     z-index: 2;
     position: relative;
     width: 100%;
@@ -172,7 +172,8 @@ html, body {
 .story-wrapper {
     display: block; 
     width: 100%;
-    margin: 0 auto 25px;
+    max-width: 250px; 
+    margin: 0 auto 25px; 
 }
 
 .story-wrapper::after {
@@ -183,8 +184,8 @@ html, body {
 
 .drop-cap-wrapper {
     float: left; 
-    margin-right: -4px; /* Margen negativo para unir el texto a la imagen */
-    margin-top: 3px; 
+    margin-right: -4px; 
+    margin-top: 10px; /* <--- Aumentado para bajar la letra un poco más */
     margin-bottom: 0px; 
 }
 
@@ -198,7 +199,7 @@ html, body {
     text-transform: uppercase;
     font-size: 1rem; 
     line-height: 1.5; 
-    text-align: center; 
+    text-align: left; 
     display: block;
 }
 
