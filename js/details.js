@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // 1. Preparación de Textos (Letras en span)
     // ==========================================
-    const textElements = document.querySelectorAll('.random-appear:not(.img-secuencia):not(.and-img-container)');
+    const textElements = document.querySelectorAll('.random-appear:not(.img-secuencia):not(.and-text-container)');
+    
     textElements.forEach(el => {
         const innerHTML = el.innerHTML; 
         if(!innerHTML.includes('<img')) {
@@ -60,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (entry.isIntersecting) {
                 const el = entry.target;
 
-                // Si es una sección con fondo animado
                 if (el.classList.contains('sec-bg')) {
                     if (!el.classList.contains('bg-anim-done')) {
                         el.classList.add('active-bg', 'bg-anim-done');
@@ -70,10 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         }, 1200); 
                     }
                 } 
-                // Si son secciones estáticas (audio, contador, itinerario)
                 else {
                     activateReveal(el);
-                    // Activa inmediatamente cualquier elemento interno con reveal
                     const childReveals = el.querySelectorAll('.reveal');
                     childReveals.forEach(r => activateReveal(r));
                 }
@@ -83,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer = new IntersectionObserver(revealCallback, { threshold: 0.15 });
     
-    // AHORA SÍ OBSERVAMOS LA CLASE DEL ITINERARIO
     document.querySelectorAll('.sec-bg, .sec-audio, .sec-countdown, .sec-itinerario').forEach(el => observer.observe(el));
 
     // ==========================================

@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const reveals = document.querySelectorAll(".reveal");
     
-    // Filtramos para agarrar solo los textos puros a fragmentar, excluyendo las imagenes de secuencia
-    const textElements = document.querySelectorAll('.random-appear:not(.img-secuencia):not(.and-img-container)');
+    // Ignoramos la imagen y el nuevo contenedor de texto del "y"
+    const textElements = document.querySelectorAll('.random-appear:not(.img-secuencia):not(.and-text-container)');
 
-    // 1. Envolvemos cada letra de texto en un <span>
     textElements.forEach(el => {
         const text = el.innerText;
         el.innerHTML = ""; 
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 2. Ejecutamos la animación de entrada
     reveals.forEach((element, index) => {
         setTimeout(() => {
             element.classList.add("active");
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             : element.querySelectorAll('.random-appear');
             
             targets.forEach(target => {
-                // Agarramos todas las .letra (tanto spans como las img con esa clase)
                 const letras = target.classList.contains('letra') 
                                ? [target] 
                                : Array.from(target.querySelectorAll('.letra'));

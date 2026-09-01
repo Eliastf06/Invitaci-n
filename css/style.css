@@ -53,9 +53,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* =========================================
-   Layout Contenedor
-========================================= */
 .title-container {
     display: flex;
     flex-direction: column;
@@ -65,9 +62,6 @@ body {
     margin-bottom: 50px;
 }
 
-/* =========================================
-   Secuencia de Letras (Nombres)
-========================================= */
 .img-secuencia {
     display: flex;
     flex-direction: row;
@@ -84,24 +78,24 @@ body {
 }
 
 /* =========================================
-   Contenedor AND
+   Conector de texto "y"
 ========================================= */
-.and-img-container {
+.and-text-container {
     text-align: center;
-    margin: -35px 0 -15px 0; 
+    margin: -30px 0 -25px 0; 
     z-index: 2;
     position: relative;
     width: 100%;
 }
 
-.and-img-container img {
-    width: 100%;
-    max-width: 60%; 
+.and-text {
+    font-size: 4rem;
+    color: var(--dorado-plateado);
+    display: inline-block;
+    line-height: 1;
+    text-transform: none; /* Evita que la Y se ponga mayúscula */
 }
 
-/* =========================================
-   Carta y Click para entrar
-========================================= */
 .action-group {
     display: flex;
     flex-direction: column;
@@ -130,9 +124,6 @@ body {
     opacity: 0.8;
 }
 
-/* =========================================
-   Animaciones laterales (Entrada lenta)
-========================================= */
 .reveal {
     opacity: 0;
     transition: opacity 1.8s ease, transform 1.8s ease;
@@ -147,9 +138,6 @@ body {
     transform: translate(0, 0);
 }
 
-/* =========================================
-   Aparición de letras (Blur a Nítido)
-========================================= */
 .letra {
     opacity: 0;
     filter: blur(10px);
@@ -159,4 +147,9 @@ body {
 .letra.visible {
     opacity: 1;
     filter: blur(0);
+}
+
+.cursiva {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 300;
 }

@@ -52,7 +52,6 @@ html, body {
     z-index: 1; 
 }
 
-/* Base del pseudo-elemento animado */
 .sec-bg::before {
     content: "";
     position: absolute;
@@ -65,19 +64,15 @@ html, body {
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Inserción directa de las imágenes con degradado (ruta relativa desde la carpeta CSS) */
 .bg-img-1::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f2.png'); }
 .bg-img-3::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f3.jpg'); }
 .bg-img-4::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f4.png'); }
 .bg-img-6::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f5.png'); }
-.bg-img-itinerario::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f3.png'); }
 
-/* Direcciones de animación iniciales */
 .bg-top::before { transform: translateY(-100%); }
 .bg-left::before { transform: translateX(-100%); }
 .bg-right::before { transform: translateX(100%); }
 
-/* Posición final al activar con JS */
 .sec-bg.active-bg::before {
     transform: translate(0, 0);
 }
@@ -136,9 +131,6 @@ html, body {
     line-height: 1.5;
 }
 
-/* =========================================
-   Contenedores de Letras en Imagen
-========================================= */
 .img-secuencia {
     display: flex;
     flex-direction: row;
@@ -155,42 +147,59 @@ html, body {
 .img-letra-sm { height: 18px; width: auto; margin: 0 1px; }
 .espacio { width: 15px; }
 
-.and-img-container {
+/* =========================================
+   Conector de texto "y"
+========================================= */
+.and-text-container {
     text-align: center;
     margin: -35px 0 -15px 0; 
     z-index: 2;
     position: relative;
     width: 100%;
 }
-.and-img-container img {
-    width: 100%;
-    max-width: 60%; 
+
+.and-text {
+    font-size: 4rem;
+    color: var(--dorado-plateado);
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
 }
 
 /* =========================================
-   Sección 3: Story, Inline Text e Imágenes
+   Sección 3: Drop Cap Literario (N) Clásico
 ========================================= */
-.inline-n-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
+.story-wrapper {
+    display: block; 
+    width: 100%;
+    margin: 0 auto 25px;
 }
 
-.n-img-normal {
-    height: 68px; 
+.story-wrapper::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.drop-cap-wrapper {
+    float: left; 
+    margin-right: -4px; /* Margen negativo para unir el texto a la imagen */
+    margin-top: 3px; 
+    margin-bottom: 0px; 
+}
+
+.drop-cap-img {
+    height: 48px; 
     width: auto;
-    flex-shrink: 0;
+    display: block;
 }
 
-.uppercase-text {
+.story-wrapper .uppercase-text {
     text-transform: uppercase;
     font-size: 1rem; 
-    text-align: center;
-    line-height: 1.4;
-    position: relative;
-    left: -15px;
+    line-height: 1.5; 
+    text-align: center; 
+    display: block;
 }
 
 .normal-text {
@@ -433,9 +442,4 @@ html, body {
     font-family: system-ui, sans-serif;
     letter-spacing: 1.5px;
     font-weight: 300;
-}
-
-.bottom-content2 {
-    margin-top: auto;
-    padding-bottom: 50px; 
 }
