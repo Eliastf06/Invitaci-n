@@ -38,16 +38,47 @@ html, body {
     flex-direction: column;
 }
 
+/* =========================================
+   Secciones con Fondo Animado
+========================================= */
 .sec-bg {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+/* Base del pseudo-elemento animado */
+.sec-bg::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Inserción directa de las imágenes con degradado (ruta relativa desde la carpeta CSS) */
+.bg-img-1::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f2.png'); }
+.bg-img-3::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f3.jpg'); }
+.bg-img-4::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f4.png'); }
+.bg-img-6::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f5.png'); }
+
+/* Direcciones de animación iniciales */
+.bg-top::before { transform: translateY(-100%); }
+.bg-left::before { transform: translateX(-100%); }
+.bg-right::before { transform: translateX(100%); }
+
+/* Posición final al activar con JS */
+.sec-bg.active-bg::before {
+    transform: translate(0, 0);
 }
 
 .sec-content {
@@ -66,10 +97,6 @@ html, body {
 
 .sec-1-content {
     margin-top: 50vh; 
-}
-
-.sec-1-content .frag-img {
-    max-width: 75%;
 }
 
 .top-content {
@@ -96,9 +123,10 @@ html, body {
 }
 
 .location-title {
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin: 15px 0 5px;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .location-desc {
@@ -108,14 +136,39 @@ html, body {
 }
 
 /* =========================================
-   Sección 3: Story, Inline Text e Imágenes
+   Contenedores de Letras en Imagen
 ========================================= */
-/* Reducción extra de story.png */
-.story-img {
-    max-width: 125px; 
-    margin-top: -10px; 
+.img-secuencia {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end; 
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 5px 0;
 }
 
+.img-letra { height: 48px; width: auto; margin: 0 2px; }
+.img-letra-lg { height: 35px; width: auto; margin: 0 2px; } 
+.img-letra-md { height: 37px; width: auto; margin: 0 1.5px; }
+.img-letra-falta { height: 36px; width: auto; margin: 0 1px; } 
+.img-letra-sm { height: 18px; width: auto; margin: 0 1px; }
+.espacio { width: 15px; }
+
+.and-img-container {
+    text-align: center;
+    margin: -35px 0 -15px 0; 
+    z-index: 2;
+    position: relative;
+    width: 100%;
+}
+.and-img-container img {
+    width: 100%;
+    max-width: 60%; 
+}
+
+/* =========================================
+   Sección 3: Story, Inline Text e Imágenes
+========================================= */
 .inline-n-text {
     display: flex;
     align-items: center;
@@ -124,17 +177,19 @@ html, body {
     margin-bottom: 20px;
 }
 
-/* n.png mucho más chica */
-.n-img {
-    width: 13px; 
+.n-img-normal {
+    height: 68px; 
+    width: auto;
     flex-shrink: 0;
 }
 
 .uppercase-text {
     text-transform: uppercase;
     font-size: 1rem; 
-    text-align: left;
+    text-align: center;
     line-height: 1.4;
+    position: relative;
+    left: -15px;
 }
 
 .normal-text {
@@ -149,22 +204,15 @@ html, body {
 /* =========================================
    Secciones 4 y 5: Ícono Lugar
 ========================================= */
-/* Reducción y desplazamiento a la izquierda del ícono lugar */
-.icono-lugar {
-    width: 13px; 
-    transform: translateX(-35px); 
-    margin-bottom: 10px;
+.ubi-img {
+    width: 70px; 
+    margin: 0 auto 10px;
+    display: block;
 }
 
 /* =========================================
    Sección 6: Detalles
 ========================================= */
-/* Imagen de detalles más chica y con más aire por debajo */
-.detalles-img {
-    max-width: 130px;
-    margin-bottom: 30px;
-}
-
 .details-list {
     gap: 45px;
     padding: 20px 55px 60px; 
@@ -177,7 +225,6 @@ html, body {
     gap: 15px;
 }
 
-/* Separación extra para el bloque de regalo */
 .item-regalo {
     margin-top: 25px;
 }
@@ -186,10 +233,6 @@ html, body {
     text-transform: none;
     line-height: 1.5;
     font-size: 0.95rem; 
-}
-
-.detail-item .frag-img {
-    max-width: 180px; 
 }
 
 /* =========================================
@@ -264,12 +307,6 @@ html, body {
     gap: 30px;
 }
 
-/* Se aumentó considerablemente el tamaño de falta.png */
-.sec-countdown .frag-img {
-    width: 280px; 
-    max-width: 90%;
-}
-
 .countdown-grid {
     display: flex;
     gap: 15px;
@@ -314,31 +351,8 @@ html, body {
 }
 
 /* =========================================
-   Contenedores Fragmentados y Letras
+   Animaciones Generales
 ========================================= */
-.frag-img {
-    position: relative;
-    display: inline-block;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-}
-
-.frag-base {
-    width: 100%;
-    height: auto;
-    opacity: 0;
-    display: block;
-}
-
-.frag-piece {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 .reveal {
     opacity: 0;
     transition: opacity 1.5s ease, transform 1.5s ease;
@@ -362,4 +376,18 @@ html, body {
 .letra.visible {
     opacity: 1;
     filter: blur(0);
+}
+
+.cursiva {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 300;
+}
+.fuente1 {
+    font-family: system-ui, sans-serif;
+    letter-spacing: 2px;
+}
+.fuente2 {
+    font-family: system-ui, sans-serif;
+    letter-spacing: 1.5px;
+    font-weight: 300;
 }

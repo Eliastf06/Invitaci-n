@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // 1. Preparación de Textos (Letras en span)
     // ==========================================
-    const textElements = document.querySelectorAll('.random-appear:not(.frag-img)');
+    const textElements = document.querySelectorAll('.random-appear:not(.img-secuencia):not(.and-img-container)');
     textElements.forEach(el => {
-        // Guardamos los saltos de línea (br) para no romper el formato
         const innerHTML = el.innerHTML; 
         if(!innerHTML.includes('<img')) {
             const tempDiv = document.createElement('div');
@@ -32,64 +31,65 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 2. Preparación de Imágenes Fragmentadas
+    // 2. Scroll Reveal con Espera de Fondos
     // ==========================================
-    const fragContainers = document.querySelectorAll('.frag-img');
-    fragContainers.forEach(container => {
-        const src = container.getAttribute('data-src');
-        if (src) {
-            const filas = 3;
-            const columnas = 5;
-            for (let f = 0; f < filas; f++) {
-                for (let c = 0; c < columnas; c++) {
-                    const pedazo = document.createElement('img');
-                    pedazo.src = src;
-                    pedazo.classList.add('frag-piece', 'letra'); // Clase .letra para animar
-                    
-                    const top = (f / filas) * 100;
-                    const bottom = 100 - ((f + 1) / filas) * 100;
-                    const left = (c / columnas) * 100;
-                    const right = 100 - ((c + 1) / columnas) * 100;
-                    
-                    pedazo.style.clipPath = `inset(${top}% ${right}% ${bottom}% ${left}%)`;
-                    container.appendChild(pedazo);
-                }
-            }
-        }
-    });
+    
+    // Función central para activar animaciones de contenido
+    const activateReveal = (target) => {
+        target.classList.add('active');
+        
+        const targets = target.classList.contains('random-appear') 
+                        ? [target] 
+                        : target.querySelectorAll('.random-appear');
+        
+        targets.forEach(t => {
+            const letras = t.classList.contains('letra') 
+                           ? [t] 
+                           : Array.from(t.querySelectorAll('.letra'));
 
-    // ==========================================
-    // 3. Scroll Reveal e Intersection Observer
-    // ==========================================
-    const revealCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                
-                // Dispara el efecto aleatorio de las letras/imágenes
-                const targets = entry.target.classList.contains('random-appear') 
-                                ? [entry.target] 
-                                : entry.target.querySelectorAll('.random-appear');
-                
-                targets.forEach(target => {
-                    const letras = Array.from(target.querySelectorAll('.letra'));
-                    if(letras.length > 0 && !target.classList.contains('anim-done')) {
-                        target.classList.add('anim-done'); // Evita re-animar si se scrollea arriba
-                        const indices = Array.from(Array(letras.length).keys()).sort(() => Math.random() - 0.5);
-                        indices.forEach((pos, i) => {
-                            setTimeout(() => { letras[pos].classList.add('visible'); }, i * 60);
-                        });
-                    }
+            if(letras.length > 0 && !t.classList.contains('anim-done')) {
+                t.classList.add('anim-done'); 
+                const indices = Array.from(Array(letras.length).keys()).sort(() => Math.random() - 0.5);
+                indices.forEach((pos, i) => {
+                    setTimeout(() => { letras[pos].classList.add('visible'); }, i * 60);
                 });
             }
         });
     };
 
+    const revealCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+
+                // Si es una sección con fondo animado
+                if (el.classList.contains('sec-bg')) {
+                    if (!el.classList.contains('bg-anim-done')) {
+                        // Inicia la animación del fondo
+                        el.classList.add('active-bg', 'bg-anim-done');
+                        
+                        // Espera 1.2s (duración del fondo) para revelar el contenido interno
+                        setTimeout(() => {
+                            const reveals = el.querySelectorAll('.reveal');
+                            reveals.forEach(r => activateReveal(r));
+                        }, 1200); 
+                    }
+                } 
+                // Si son secciones estáticas (audio, contador)
+                else {
+                    activateReveal(el);
+                }
+            }
+        });
+    };
+
     const observer = new IntersectionObserver(revealCallback, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    
+    // Observamos los contenedores principales en lugar de cada .reveal individualmente
+    document.querySelectorAll('.sec-bg, .sec-audio, .sec-countdown').forEach(el => observer.observe(el));
 
     // ==========================================
-    // 4. Audio Player Lógica
+    // 3. Audio Player Lógica
     // ==========================================
     const audio = document.getElementById('wedding-audio');
     const playBtn = document.getElementById('play-pause-btn');
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 5. Contador Regresivo
+    // 4. Contador Regresivo
     // ==========================================
     const fechaBoda = new Date('2026-10-28T10:00:00').getTime();
     const eDays = document.getElementById('days');

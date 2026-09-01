@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Obsequios - Boda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/present.css">
+</head>
+<body class="present-body">
+
+    <div class="mobile-wrapper">
+        <section class="sec-present">
+            
+            <a href="detalles.html" class="back-link reveal reveal-bottom"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+            
+            <h2 class="title-main reveal reveal-bottom">Obsequios</h2>
+            <p class="subtitle reveal reveal-bottom">El mejor regalo es tu presencia, pero si deseas colaborar con nosotros...</p>
+            
+            <!-- Tarjeta Flavia -->
+            <div class="card reveal reveal-left">
+                <i class="fa-solid fa-gift card-icon"></i>
+                
+                <div class="divider">
+                    <div class="line left-line"></div>
+                    <i class="fa-regular fa-heart"></i>
+                    <div class="line right-line"></div>
+                </div>
+                
+                <div class="card-info">
+                    <p class="label">TITULAR</p>
+                    <p class="value">Flavia Daiana</p>
+                    <p class="label">ALIAS</p>
+                    <p class="value alias-text">kimy.martinez</p>
+                </div>
+                
+                <button class="action-btn copy-btn" data-alias="kimy.martinez">
+                    <i class="fa-regular fa-copy"></i> Copiar Alias
+                </button>
+            </div>
+
+            <!-- Tarjeta Rubén -->
+            <div class="card reveal reveal-right">
+                <i class="fa-solid fa-gift card-icon"></i>
+                
+                <div class="divider">
+                    <div class="line left-line"></div>
+                    <i class="fa-regular fa-heart"></i>
+                    <div class="line right-line"></div>
+                </div>
+                
+                <div class="card-info">
+                    <p class="label">TITULAR</p>
+                    <p class="value">Rubén Torres</p>
+                    <p class="label">ALIAS</p>
+                    <p class="value alias-text">Rbn.90</p>
+                </div>
+                
+                <button class="action-btn copy-btn" data-alias="Rbn.90">
+                    <i class="fa-regular fa-copy"></i> Copiar Alias
+                </button>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- Contenedor del Sistema Toast Accesible -->
+    <div id="toast-container" role="status" aria-live="polite"></div>
+
+    <script src="js/present.js"></script>
+</body>
+</html>

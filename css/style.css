@@ -26,7 +26,7 @@ body {
 }
 
 .bg-image {
-    position: fixed;
+    position:fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -54,7 +54,7 @@ body {
 }
 
 /* =========================================
-   Nombres (Bodoni Moda) y Layout
+   Layout Contenedor
 ========================================= */
 .title-container {
     display: flex;
@@ -65,39 +65,38 @@ body {
     margin-bottom: 50px;
 }
 
-.name {
-    font-family: var(--fuente-nombres);
-    font-size: 4.5rem;
-    font-weight: normal;
-    width: 100%;
-    letter-spacing: 2px;
+/* =========================================
+   Secuencia de Letras (Nombres)
+========================================= */
+.img-secuencia {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end; 
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 5px 0;
 }
 
-.align-left { text-align: left; }
-.align-right { text-align: right; }
+.img-letra { 
+    height: 48px; 
+    width: auto; 
+    margin: 0 2px; 
+}
 
 /* =========================================
-   Imagen "AND" fragmentada
+   Contenedor AND
 ========================================= */
-.and-container {
+.and-img-container {
+    text-align: center;
+    margin: -35px 0 -15px 0; 
+    z-index: 2;
     position: relative;
-    width: 300px;
-    margin: 10px 0;
+    width: 100%;
 }
 
-.and-base {
+.and-img-container img {
     width: 100%;
-    height: auto;
-    opacity: 0; /* Solo sirve para darle alto al div */
-    display: block;
-}
-
-.and-piece {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    max-width: 60%; 
 }
 
 /* =========================================
@@ -141,14 +140,15 @@ body {
 
 .reveal-left { transform: translateX(-80px); }
 .reveal-right { transform: translateX(80px); }
+.reveal-bottom { transform: translateY(80px); }
 
 .reveal.active {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate(0, 0);
 }
 
 /* =========================================
-   Aparición de letras y pedazos (Blur a Nítido)
+   Aparición de letras (Blur a Nítido)
 ========================================= */
 .letra {
     opacity: 0;
@@ -160,5 +160,3 @@ body {
     opacity: 1;
     filter: blur(0);
 }
-
-
