@@ -82,7 +82,7 @@ body {
 ========================================= */
 .and-text-container {
     text-align: center;
-    margin: -30px 0 -25px 0; 
+    margin: -25px 0 10px 0; /* Mayor margen negativo superior para acercarlo a Ruben, margen positivo inferior para alejar de Flavia */
     z-index: 2;
     position: relative;
     width: 100%;
@@ -93,7 +93,7 @@ body {
     color: var(--dorado-plateado);
     display: inline-block;
     line-height: 1;
-    text-transform: none; /* Evita que la Y se ponga mayúscula */
+    text-transform: none; 
 }
 
 .action-group {

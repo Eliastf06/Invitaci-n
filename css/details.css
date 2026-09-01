@@ -152,7 +152,7 @@ html, body {
 ========================================= */
 .and-text-container {
     text-align: center;
-    margin: -25px 0 -5px 0; 
+    margin: -15px 0 12px 0; /* Margen modificado para evitar choque en ambos nombres en móviles */
     z-index: 2;
     position: relative;
     width: 100%;
@@ -185,7 +185,7 @@ html, body {
 .drop-cap-wrapper {
     float: left; 
     margin-right: -4px; 
-    margin-top: 10px; /* <--- Aumentado para bajar la letra un poco más */
+    margin-top: 10px; 
     margin-bottom: 0px; 
 }
 
