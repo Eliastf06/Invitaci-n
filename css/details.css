@@ -70,6 +70,7 @@ html, body {
 .bg-img-3::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f3.jpg'); }
 .bg-img-4::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f4.png'); }
 .bg-img-6::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f5.png'); }
+.bg-img-itinerario::before { background-image: linear-gradient(to bottom, transparent 40%, #000 100%), url('../img/f3.png'); }
 
 /* Direcciones de animación iniciales */
 .bg-top::before { transform: translateY(-100%); }
@@ -236,6 +237,48 @@ html, body {
 }
 
 /* =========================================
+   Itinerario (Sin Fondo Animado)
+========================================= */
+.sec-itinerario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0 20px; 
+}
+
+.itinerary-list {
+    width: 100%;
+    padding: 0 40px; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.itinerary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.itinerary-time {
+    font-family: var(--fuente-nombres);
+    font-size: 1.4rem;
+    color: var(--boton-bg);
+    letter-spacing: 1px;
+}
+
+.itinerary-event {
+    font-family: var(--fuente-textos);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================================
    Sección 2: Audio Player Totalmente Centrado
 ========================================= */
 .sec-audio {
@@ -390,4 +433,9 @@ html, body {
     font-family: system-ui, sans-serif;
     letter-spacing: 1.5px;
     font-weight: 300;
+}
+
+.bottom-content2 {
+    margin-top: auto;
+    padding-bottom: 50px; 
 }

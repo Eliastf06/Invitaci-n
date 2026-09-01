@@ -33,8 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // 2. Scroll Reveal con Espera de Fondos
     // ==========================================
-    
-    // Función central para activar animaciones de contenido
     const activateReveal = (target) => {
         target.classList.add('active');
         
@@ -65,19 +63,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Si es una sección con fondo animado
                 if (el.classList.contains('sec-bg')) {
                     if (!el.classList.contains('bg-anim-done')) {
-                        // Inicia la animación del fondo
                         el.classList.add('active-bg', 'bg-anim-done');
-                        
-                        // Espera 1.2s (duración del fondo) para revelar el contenido interno
                         setTimeout(() => {
                             const reveals = el.querySelectorAll('.reveal');
                             reveals.forEach(r => activateReveal(r));
                         }, 1200); 
                     }
                 } 
-                // Si son secciones estáticas (audio, contador)
+                // Si son secciones estáticas (audio, contador, itinerario)
                 else {
                     activateReveal(el);
+                    // Activa inmediatamente cualquier elemento interno con reveal
+                    const childReveals = el.querySelectorAll('.reveal');
+                    childReveals.forEach(r => activateReveal(r));
                 }
             }
         });
@@ -85,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer = new IntersectionObserver(revealCallback, { threshold: 0.15 });
     
-    // Observamos los contenedores principales en lugar de cada .reveal individualmente
-    document.querySelectorAll('.sec-bg, .sec-audio, .sec-countdown').forEach(el => observer.observe(el));
+    // AHORA SÍ OBSERVAMOS LA CLASE DEL ITINERARIO
+    document.querySelectorAll('.sec-bg, .sec-audio, .sec-countdown, .sec-itinerario').forEach(el => observer.observe(el));
 
     // ==========================================
     // 3. Audio Player Lógica

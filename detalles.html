@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/details.css">
 </head>
 
@@ -40,9 +41,7 @@
                     <img src="img/a.png" class="letra img-letra" alt="a">
                 </div>
 
-                <div class="random-appear reveal reveal-left" style="margin-top: 25px; width: 100%;">
-                    <img src="img/date.png" class="letra" style="width: 100%; max-width: 420px;" alt="date">
-                </div>
+                <p class="random-appear reveal reveal-left fuente1" style="margin-top: 35px; font-size: 1.05rem; letter-spacing: 4px; color: var(--dorado-plateado);">TE INVITAMOS A NUESTRA BODA</p>
             </div>
         </section>
 
@@ -104,7 +103,7 @@
                 </div>
                 
                 <p class="location-title reveal reveal-right random-appear">Registro Civil</p>
-                <p class="location-desc reveal reveal-left random-appear fuente1">Av. Hipólito Yrigoyen 497<br>28/10/26, 10:00h</p>
+                <p class="location-desc reveal reveal-left random-appear fuente1">Av. Hipólito Yrigoyen 497<br>28/10/26, 10:00hs</p>
                 <a href="https://www.google.com/maps/place/Registro+Civil+Quilmes/@-34.7222926,-58.263849,17z/data=!4m6!3m5!1s0x95a32e14ccfd0c63:0xcdbf57abe2b7e307!8m2!3d-34.7222821!4d-58.2612928!16s%2Fg%2F11bwfjlfkk?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-btn reveal reveal-bottom">Como llegar</a>
             </div>
         </section>
@@ -125,7 +124,7 @@
                 </div>
 
                 <p class="location-title reveal reveal-right random-appear">Clahe Eventos</p>
-                <p class="location-desc reveal reveal-left random-appear fuente1">Lavalleja 566, Quilmes<br>30/10/26 19:00h</p>
+                <p class="location-desc reveal reveal-left random-appear fuente1">Lavalleja 566, Quilmes<br>30/10/26 19:00hs (Puntual)</p>
                 <a href="https://www.google.com/maps/place/Clahe+Eventos+Quilmes+GH/@-34.7387343,-58.2578871,17z/data=!4m6!3m5!1s0x95a32f239f5dbd4d:0x5a5b68ce224e5cde!8m2!3d-34.7387581!4d-58.2552673!16s%2Fg%2F11z2b1fqbm?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-btn reveal reveal-bottom">Como llegar</a>
             </div>
         </section>
@@ -178,7 +177,35 @@
             </div>
         </section>
 
-        <!-- ================= SECCIÓN 7 (CONTADOR) ================= -->
+        <!-- ================= SECCIÓN ITINERARIO (Sin Fondo) ================= -->
+        <section class="sec-itinerario">
+            <h2 class="cursiva random-appear reveal reveal-right" style="font-size: 4rem; margin-bottom: 15px; text-align: center;">Itinerario</h2>
+            
+            <div class="itinerary-list">
+                <div class="itinerary-item reveal reveal-left">
+                    <span class="itinerary-time random-appear">19:00hs</span>
+                    <span class="itinerary-event random-appear">Entrada</span>
+                </div>
+                <div class="itinerary-item reveal reveal-right">
+                    <span class="itinerary-time random-appear">19:30hs</span>
+                    <span class="itinerary-event random-appear">Ceremonia</span>
+                </div>
+                <div class="itinerary-item reveal reveal-left">
+                    <span class="itinerary-time random-appear">20:10hs</span>
+                    <span class="itinerary-event random-appear">Cóctel</span>
+                </div>
+                <div class="itinerary-item reveal reveal-right">
+                    <span class="itinerary-time random-appear">21:00hs</span>
+                    <span class="itinerary-event random-appear">Cena</span>
+                </div>
+                <div class="itinerary-item reveal reveal-left">
+                    <span class="itinerary-time random-appear">22:00hs</span>
+                    <span class="itinerary-event random-appear">Baile</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN 7 (CONTADOR & ASISTENCIA) ================= -->
         <section class="sec-countdown reveal reveal-bottom">
             <div class="img-secuencia random-appear" style="margin-bottom: 30px; width: 100%;">
                 <img src="img/¿.png" class="letra img-letra-falta" alt="¿">
@@ -214,6 +241,15 @@
                     <span id="secs">00</span>
                     <small>SEG</small>
                 </div>
+            </div>
+
+            <!-- Confirmar Asistencia -->
+            <div class="rsvp-container" style="margin-top: 50px; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <h3 class="cursiva random-appear" style="font-size: 3rem; margin-bottom: 5px;">Confirmar Asistencia</h3>
+                <p class="fuente2 random-appear" style="text-transform: none; font-size: 0.95rem; margin-bottom: 25px; opacity: 0.8;">Por favor confirmanos tu presencia</p>
+                <a href="https://wa.me/54911536128825" target="_blank" class="action-btn" style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> 1536128825
+                </a>
             </div>
         </section>
 
